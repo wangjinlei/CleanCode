@@ -185,6 +185,7 @@ void relaseRegistryHandle(RegistryKey key);
 
 # 分支条件语句
 > 关键思想: `把条件、循环以及其他对控制流的改变做得越自然越好，运用一种方式使读者不用停下来重读你的代码`
+
 ## 把控制流变得易读
 
 ```java
