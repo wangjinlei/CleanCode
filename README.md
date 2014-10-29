@@ -82,9 +82,9 @@
 </font>
 
 
-##从变量命名谈起
+#从变量命名谈起
 
-### 把信息装到名字中
+## 把信息装到名字中
 >关键思想：`把信息装到名字中`
 
 避免使用“空洞”的词，比如
@@ -103,9 +103,9 @@ class BinaryTree {
 你期望size()返回什么呢？树的高度，节点数，还是树在内容中占的空间？
 问题在于，size()名字承载了太多的信息，太泛。更好的名字是，`height()`, `numberNode()`,`memeoryBytes()`
 
-### 使用具体的名字代替抽象的名字
+## 使用具体的名字代替抽象的名字
 
-### 带单位的变量
+## 带单位的变量
 
 ```java
 start(int delay)   									delay -> delaySecs 
@@ -113,42 +113,69 @@ createCache(int size)								size -> sizeMb
 throttleDownload(float limit)						limit -> limitKps
 rotate(float angle) 								angle -> degreesCw
 ```
+再举几个例子：
+```java
+int d // 消逝的时间，以日计
+```
+就没有下面这个几个名字好：
+```java
+int elapsedTimeInDays;
+int daysSinceCreate;
+int daysSinceModification;
+int fileAgeInDays
+```
 
-* 方便的`导入导出`功能
-    *  直接把一个markdown的文本文件拖放到当前这个页面就可以了
-    *  导出为一个html格式的文件，样式一点也不会丢失
-* 编辑和预览`同步滚动`，所见即所得（右上角设置）
+## 做有意思的区分
+```c
+char *copyChars(char *a1, char *a2);
+```
+vs
+```c
+char * strcpy(char *dest, char *src);
+```
+哪一个方法（函数）更好？毫无疑问是第二个，见名知意。
+
+如果在项目中出现一个类叫 `Product`, `ProductInfo`, `ProductData`。名字虽然不同，但是意思却无法区别。
+
+* variable 一词永远都不应该出现在变量名中
+* table 一词永远都不应该出现在表名中
+* nameString 比name好吗？
+
+```java
+getActiveAccount();
+getActiveAccountInfo();
+getActiveAccountDate();
+```
+只看名字使用者能知道该调用哪一个方法吗？
+如果缺少明确约定：
+
+* moneyAmount就和money没有任何区别
+* costomerInfo就和customer没有任何却别
+* accountDate就和account没有任何区别
+* theMessage就和message没有任何却别
+
+
+## 避免魔术
 
 
 ##有问题反馈
-在使用中有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流
+在阅读过过程中有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流
 
-* 邮件(dev.hubo#gmail.com, 把#换成@)
-* QQ: 287759234
+* 邮件(jinlei.wjl#alibaba-inc.com, 把#换成@)
+* QQ: 692548668
 
 
 ##捐助开发者
 在兴趣的驱动下,写一个`免费`的东西，有欣喜，也还有汗水，希望你喜欢我的作品，同时也能支持一
 
 ##感激
-感谢以下的项目,排名不分先后
+感谢以下的几本书的作者,排名不分先后
 
-* [mou](http://mouapp.com/) 
-* [ace](http://ace.ajax.org/)
-* [jquery](http://jquery.com)
+* [Code Complate]() 
+* [Clean Code]()
+* [Refactor:improving the design of the existing code]()
+* [The Art of Readable Code]()
 
 ##关于作者
 
-```javascript
-  var ihubo = {
-    nickName  : "草依山",
-    site : "http://jser.me"
-  }
-```
-
-```java
-for (int i = 0; i < 10; i++) {
-    System.out.println("ten times");
-}
-
-```
+ 王金雷
