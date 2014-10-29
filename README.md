@@ -157,6 +157,191 @@ getActiveAccountDate();
 
 ## 避免魔术
 
+## 注释
+>关键思想：`注释的目的是尽量帮助读者了解的和作者一样多。`
+
+>`当你写代码时，在你的脑海里会有很多有价值的信息。当其他人读你的代码时，这些信息已经丢失了，他们所见到的只是眼前的代码。`
+
+## 不要给不好的名字添加注释--应该把名字改好
+举例：
+```java
+// Releases the handle for this key. This doesn't modify the actual registry.
+void delteRegistry(RegistryKey key);
+```
+deleteRegitry() 这个名字听起来像是一个危险的函数（它会删除注册表？！）注释里写道“它不会改动真正的注册表”是想澄清困惑。
+
+其实，我们可以用一个更加自我说明的名字，就像：
+```java
+void relaseRegistryHandle(RegistryKey key);
+```
+通常来讲，你不需要“拐杖式注释”--试图粉饰可读性差的代码的注释。
+* 好代码 > 坏代码 + 好注释
+
+## 加入导演评论
+
+## 为代码中瑕疵写注释
+
+## 给常量加注释
+
+# 分支条件语句
+> 关键思想: `把条件、循环以及其他对控制流的改变做得越自然越好，运用一种方式使读者不用停下来重读你的代码`
+## 把控制流变得易读
+
+```java
+if (length >= 10)
+```
+```java
+if (10 <= length)
+```
+对绝大多数程序员来说，第一段更容易读。那么，下面的两段呢？
+```java
+while (bytesReceived < bytesExpected)
+```
+```java
+while (bytes_expected > bytes_received)
+```
+仍然是第一段更容易读。可为什么是这样？通用规则是什么？这么决定是写成 a > b 好些，还是 a < b 好些？
+>原则如下：
+
+* 比较的左侧："被询问"的表达式，它的值更倾向于不断的变化
+* 比较的右侧： 用来做比较的表达式，它的值更倾向于常量
+
+## 语句块的顺序
+```java
+if (a == b) {
+	// case one
+} else {
+	// case two
+}
+```
+也可以写成
+```java
+if (a != b) {
+	// case two
+} else {
+	// case one
+}
+```
+之前你可能没有想过太多，但在有些情况下有理由相信其中一种顺序比另一种好：
+* 首先处理正逻辑而不是负逻辑的情况。
+* 首先处理掉简单的情况，这种方式可能还会使得if和else在屏幕之内都可见。
+* 首先处理有趣的或者可疑的情况
+有时候这些倾向性之间会有冲突，那么就要靠自己判断了。请记住：“没有银弹”。
+
+##最小化嵌套
+```java
+if (userResult == SUCCESS) {
+	if (permissionResult != SUCCESS) {
+		reply.writeErrors("error reading permissions");
+		reply.done();
+		return;
+	}
+	replay.writeErrors("");
+} else {
+	replay.wirteErrors(userResult);
+}
+replay.done();
+
+```
+通过提早返回来减少嵌套：
+```java
+if (userResult != SUCCESS) {
+	replay.wirteErrors(userResult);
+	reply.done();
+	return;
+}
+
+if (permissionResult != SUCCESS) {
+	reply.writeErrors("error reading permissions");
+	reply.done();
+	return;
+}
+
+replay.wirteErrors("");
+reply.done();
+
+```
+## 减少循环内的嵌套
+```java
+for (int i = 0; i < results.size(); i++) {
+	if (result[i] != null) {
+		nonNullCount++;
+		if (results[i].name != "") {
+			System.out.println("considerint candidate...");
+			...
+		}
+	}
+}
+```
+在循环中提早返回的技术是continue
+```java
+for (int i = 0; i < results.size(); i++) {
+	if (result[i] == null) {
+		continue;		
+	}
+	nonNullCount++;
+	if (results[i].name != "") {
+		System.out.println("considerint candidate...");
+		...
+	}
+}
+```
+### 拆分超长表达式,用作解释的变量
+``` python
+if line.split(':')[0].strip() == "root" :
+	# do something
+```
+和上面是同样的代码，但是现在有了一个解释变量。
+``` python
+username = if line.split(':')[0].strip()
+if username == "root":
+	# do somethong...
+```
+### 拆分超长表达式,总结变量
+```java
+if (request.userId == document.ownerId) {
+	// user can edit this document...
+}
+...
+if (request.userId != document.ownerId) {
+	// document is read only
+}
+```
+第一种做法：
+```java
+final boolean userOwnsDocument = (request.userId == document.ownerId);
+
+if (userOwnsDocument) {
+	// user can edit this document
+}
+```
+第二种做法：
+```java
+boolean userCanEdit() {
+	return request.userId == document.ownerId;
+}
+
+if (userCanEdit()) {
+	// user can edit this document...
+}
+```
+
+### 减少没有价值的临时变量
+
+```python
+now = datetime.datetime.now();
+root_message.last_view_time = now
+```
+
+```python
+root_message.last_view_time = datetime.datetime.now();
+```
+
+
+
+
+
+##
 
 ##有问题反馈
 在阅读过过程中有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流
