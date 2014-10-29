@@ -147,12 +147,8 @@ getActiveAccountInfo();
 getActiveAccountDate();
 ```
 只看名字使用者能知道该调用哪一个方法吗？
-如果缺少明确约定：
-
-* moneyAmount就和money没有任何区别
-* costomerInfo就和customer没有任何却别
-* accountDate就和account没有任何区别
-* theMessage就和message没有任何却别
+如果缺少明确约定： `moneyAmount/money`，`costomerInfo/customer`，`accountDate/account` ，`theMessage/message`
+他们实际上没有任何区别
 
 
 ## 避免魔术
