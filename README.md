@@ -84,6 +84,36 @@
 
 ##从变量命名谈起
 
+### 把信息装到名字中
+>关键思想：`把信息装到名字中`
+
+避免使用“空洞”的词，比如
+```python
+def getPage(url):
+```
+
+get这个词没有表达出更多的信息，这个方法是从本地缓存得到一个页面，还是从数据库中，或者是从互联网中？如果是从互联网中，更专业的名字是 `downloadPage()` 
+
+再比如：
+```java
+class BinaryTree {
+	int size();
+}
+```
+你期望size()返回什么呢？树的高度，节点数，还是树在内容中占的空间？
+问题在于，size()名字承载了太多的信息，太泛。更好的名字是，`height()`, `numberNode()`,`memeoryBytes()`
+
+### 使用具体的名字代替抽象的名字
+
+### 带单位的变量
+
+```java
+start(int delay)   									delay -> delaySecs 
+createCache(int size)								size -> sizeMb
+throttleDownload(float limit)						limit -> limitKps
+rotate(float angle) 								angle -> degreesCw
+```
+
 * 方便的`导入导出`功能
     *  直接把一个markdown的文本文件拖放到当前这个页面就可以了
     *  导出为一个html格式的文件，样式一点也不会丢失
