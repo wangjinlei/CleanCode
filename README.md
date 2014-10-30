@@ -124,7 +124,7 @@ int daysSinceModification;
 int fileAgeInDays
 ```
 
-## 做有意思的区分
+## 做有意义的区分
 ```c
 char *copyChars(char *a1, char *a2);
 ```
@@ -376,16 +376,15 @@ if file, err := os.Open(filename); err != nil {
 * QQ: 692548668
 
 
-##捐助开发者
-在兴趣的驱动下,写一个`免费`的东西，有欣喜，也还有汗水，希望你喜欢我的作品，同时也能支持一
 
 ##感激
 感谢以下的几本书的作者,排名不分先后
 
-* [Code Complate]() 
-* [Clean Code]()
-* [Refactor:improving the design of the existing code]()
-* [The Art of Readable Code]()
+* [代码大全]() 
+* [代码整洁之道]()
+* [重构：改善既有代码的设计]()
+* [编写可读代码的艺术]()
+* [程序员修炼之道：从小工到专家]()
 
 ##关于作者
 
