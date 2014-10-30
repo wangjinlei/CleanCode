@@ -367,7 +367,102 @@ if file, err := os.Open(filename); err != nil {
 
 ```
 
-##
+## 变量相关
+* 1. 变量越多，就越难全部跟踪它们的动向。
+* 2. 变量的作用域越大，就需要跟踪它的动向越久。
+* 3. 变量改动的越频繁，就越难以跟踪它的当前值。
+
+```javascript
+var remove_one = function () {
+	var index_to_remove = null;
+	for (var i = 0; i < array.length; i++) {
+		if (array[i] == value_to_remove) {
+			index_to_remove = i;
+			break;
+		}
+	}
+	if (index_to_remove != nul) {
+		array.splice(index_to_remove, 1);
+	}
+}
+```
+消除 index_to_remove 这个临时变量后的代码如下
+```javascript
+var remove_one = function (array, value_to_remove) {
+	for (var i = 0; i < array.length; i++) {
+		array.splice(i, 1);
+		return;
+	}
+}
+```
+
+## 减少控制流变量
+```java
+boolean done = false;
+while(condition && !done) {
+	...
+	if (...) {
+		done = true;
+		continue;
+	}
+}
+```
+像done这样的变量，称为“控制流变量”。他们唯一的目的就是控制程序的执行，修改如下：
+```java
+while (condition) {
+	...
+	if (...) {
+		break;
+	}
+}
+```
+## 减少变量的作用域
+
+
+## 重构方法/函数
+Kent Beck,《Smalltalk Best Practice Patterns》描述了“组合方法模式”，其中列出了几条把代码拆分成许多小函数的原则。尤其是其中一条原则“把一个方法中的所有操作保持在一个抽象层次上”。
+
+## 函数应该只做一件事
+
+## 函数应该和你`JJ`一样短小
+
+## 函数要有明确的注释
+* 1. 方法要有一个概括性的注释，该方法要做的工作
+* 2. 每个参数都要给出注释
+* 3. 该方法是否抛出异常，何时抛出异常，要给出说明
+* 4. 返回值的说明，什么样的返回值表示成功，或失败。
+
+举一个jdk类库中的例子：
+```java
+/**
+ * Reads up to <code>len</code> bytes of data from this input stream
+ * into an array of bytes. If <code>len</code> is not zero, the method
+ * blocks until some input is available; otherwise, no
+ * bytes are read and <code>0</code> is returned.
+ *
+ * @param      b     the buffer into which the data is read.
+ * @param      off   the start offset in the destination array <code>b</code>
+ * @param      len   the maximum number of bytes read.
+ * @return     the total number of bytes read into the buffer, or
+ *             <code>-1</code> if there is no more data because the end of
+ *             the file has been reached.
+ * @exception  NullPointerException If <code>b</code> is <code>null</code>.
+ * @exception  IndexOutOfBoundsException If <code>off</code> is negative, 
+ * <code>len</code> is negative, or <code>len</code> is greater than 
+ * <code>b.length - off</code>
+ * @exception  IOException  if an I/O error occurs.
+ */
+public int read(byte b[], int off, int len) throws IOException {
+	
+```
+
+## 首先要给类起一个好的名字
+
+## 类的职责要单一
+
+## 面向抽象编程
+
+
 
 ##有问题反馈
 在阅读过过程中有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流
