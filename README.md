@@ -31,8 +31,8 @@
 	* 8.5 依赖倒置原则
 	* 8.6 接口隔离原则
 
-##什么是整洁的代码?
-<b> Bjarne Stroustrup，C++之父：</b>
+#什么是整洁的代码?
+##  Bjarne Stroustrup，C++之父：
  
 * 我喜欢优雅、高效的代码 
 * 逻辑应该是清晰的，bug难以隐藏；
@@ -41,13 +41,13 @@
 * 性能接近最佳化，避免代码混乱和无原则的优化；
 * 整洁的代码只做一件事。
 
-<b> Grady Booch，《面向对象分析与设计》作者：</b> 
+##  Grady Booch，《面向对象分析与设计》作者：
 
 * 整洁的代码是简单、直接的；
 * 整洁的代码，读起来像是一篇写得很好的散文；
 * 整洁的代码永远不会掩盖设计者的意图，而是具有少量的抽象和清晰的控制行。
 
-<b> Dave Thomas，OTI公司创始人，Eclipse战略教父：</b> 
+##  Dave Thomas，OTI公司创始人，Eclipse战略教父： 
 
 * 整洁的代码可以被除了原作者之外的其他开发者阅读和改善；
 * 具备单元测试和验收测试；
@@ -57,20 +57,20 @@
 * 提供了一个清晰的、最小的API；
 * 应该根据语言特性，在代码中单独显示必要的信息，而不是所有的信息。
 
-<b> Michael Feathers，《修改代码的艺术》作者：</b> 
+##  Michael Feathers，《修改代码的艺术》作者：
 
 * 整洁的代码看起来总是像很在乎代码质量的人写的；
 * 没有明显的需要改善的地方；
 * 代码的作者似乎考虑到了所有的事情。
 
-<b>Ward Cunningham，Wiki和Fit创始人，极限编程联合创始人，Smalltalk和面向对象的思想领袖：</b> 
+## Ward Cunningham，Wiki和Fit创始人，极限编程联合创始人，Smalltalk和面向对象的思想领袖：
 
 * 当你读代码时，你发现每个程序都如你期待的那样
 * 你可以称之为漂亮的代码
 * 代码完美展现了该编程语言的设计目的
 
-<b><font color=red>
-总之，整洁的代码的特点： 
+
+## 总之，整洁的代码的特点： 
 
 * 容易与其他人协作（简单、意图明确、良好的抽象、不出意料、合适的名称）
 * 针对现实世界，比如，有一个清晰的错误处理策略
@@ -78,8 +78,7 @@
 * 最小化（做一件事，最小的依赖）
 * 以最合适的方式解决问题
 
-</b>
-</font>
+
 
 
 #从变量命名谈起
@@ -283,7 +282,7 @@ for (int i = 0; i < results.size(); i++) {
 	}
 }
 ```
-### 拆分超长表达式,用作解释的变量
+## 拆分超长表达式,用作解释的变量
 ``` python
 if line.split(':')[0].strip() == "root" :
 	# do something
@@ -294,7 +293,7 @@ username = if line.split(':')[0].strip()
 if username == "root":
 	# do somethong...
 ```
-### 拆分超长表达式,总结变量
+## 拆分超长表达式,总结变量
 ```java
 if (request.userId == document.ownerId) {
 	// user can edit this document...
@@ -323,7 +322,7 @@ if (userCanEdit()) {
 }
 ```
 
-### 减少没有价值的临时变量
+## 减少没有价值的临时变量
 
 ```python
 now = datetime.datetime.now();
@@ -335,8 +334,38 @@ root_message.last_view_time = datetime.datetime.now();
 ```
 
 
+## C style 的错误处理
+```c
+int func(Input *in, Output *out) {
+	if (in == null || out == null) {
+		return -1;
+	}
 
+	// other code here
 
+	return 1;
+}
+
+Output *out;
+int result = func(in, out);
+if (result == -1) {
+	return;
+}
+```
+
+## Golang style 的错误处理
+```golang
+// 打开文件操作
+if file, err := os.Open(filename); err != nil {
+	log.Error("Fail to open the file:", err) 
+    return 
+}
+```
+
+## java 异常处理机制
+```java
+
+```
 
 ##
 
