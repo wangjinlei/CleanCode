@@ -367,6 +367,9 @@ if file, err := os.Open(filename); err != nil {
 
 ```
 
+## Checked Exception vs RuntimeException
+这是一个非常有争议的话题
+
 ## 变量相关
 * 1. 变量越多，就越难全部跟踪它们的动向。
 * 2. 变量的作用域越大，就需要跟踪它的动向越久。
@@ -470,8 +473,6 @@ public int read(byte b[], int off, int len) throws IOException {
 * 邮件(jinlei.wjl#alibaba-inc.com, 把#换成@)
 * QQ: 692548668
 
-
-
 ##感激
 感谢以下的几本书的作者,排名不分先后
 
@@ -483,4 +484,4 @@ public int read(byte b[], int off, int len) throws IOException {
 
 ##关于作者
 
- 王金雷
+ 王金雷,生活中是狮子座，写代码时是处女座~
